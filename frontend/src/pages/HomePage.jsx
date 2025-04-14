@@ -1,10 +1,8 @@
 import React from 'react';
   import Nav from '../components/Nav';
+  import Footer from '../components/Footer'
   import fs from '../assets/fs.png'
-import Footer from '../components/Footer';
 
-  
-  
 
 const HomePage = () => {
 
@@ -225,24 +223,10 @@ const HomePage = () => {
   </div>
 </section>
 
-
 <Footer />
 
     
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
