@@ -2,15 +2,15 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className="border-t pt-8 pb-6">
+    <footer className="border-t pt-8 pb-6 bg-gray-100">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between">
           {/* Logo and Description */}
           <div className="mb-6 md:mb-0 md:w-1/4">
             <div className="flex items-center mb-3">
               <span className="font-bold text-xl">
-                <span className="text-black">Perfect</span>
-                <span className="text-red-500">Recipe</span>
+                <span className="text-black">Yum</span>
+                <span className="text-red-500">Story</span>
               </span>
             </div>
             <p className="text-gray-600 text-sm">

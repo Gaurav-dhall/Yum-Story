@@ -3,8 +3,6 @@ import React from 'react';
   import Footer from '../components/Footer'
   import fs from '../assets/fs.png'
 
-  
-  
 
 const HomePage = () => {
 
@@ -15,8 +13,8 @@ const HomePage = () => {
       <Nav />
 
     {/* Hero Section */}
-    <section className="relative px-8 py-12 bg-red-100 bg-opacity-30">
-      <div className="flex">
+    <section className="relative px-8  bg-red-100 bg-opacity-30">
+      <div className="flex justify-center items-center">
         <div className="w-1/2 pr-8">
           <h1 className="text-5xl font-bold mb-2">
             Your Daily Dish
@@ -225,7 +223,6 @@ const HomePage = () => {
   </div>
 </section>
 
-{/* Footer */}
 <Footer />
 
     

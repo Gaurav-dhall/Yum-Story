@@ -1,20 +1,15 @@
 import React from 'react';
-  import Nav from '../components/Nav';
+import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import { useState } from 'react';
-
-
-
-
-
 
 
 export default function PerfectRecipeLogin() {
 
   const [email, setEmail] = useState('');
-const [password, setPassword] = useState('');
-const [showPassword, setShowPassword] = useState(false);
- 
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', { email, password, agreeTerms });
@@ -30,9 +25,9 @@ const [showPassword, setShowPassword] = useState(false);
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Food Image */}
           <div className="w-full md:w-1/2">
-            <img 
-              src="/api/placeholder/500/500" 
-              alt="Healthy food bowl with vegetables and grains" 
+            <img
+              src="/api/placeholder/500/500"
+              alt="Healthy food bowl with vegetables and grains"
               className="rounded-lg shadow-md w-full h-auto"
             />
           </div>
@@ -73,7 +68,7 @@ const [showPassword, setShowPassword] = useState(false);
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
-                  <button 
+                  <button
                     type="button"
                     className="absolute right-3 top-2.5 text-gray-400"
                     onClick={() => setShowPassword(!showPassword)}
@@ -93,10 +88,6 @@ const [showPassword, setShowPassword] = useState(false);
                 </div>
               </div>
 
-              
-
-             
-
               <button
                 type="submit"
                 className="w-full bg-red-400 text-white py-2 px-4 rounded-md hover:bg-red-600 transition-colors"
@@ -106,14 +97,14 @@ const [showPassword, setShowPassword] = useState(false);
             </form>
 
             <div className="mt-6 text-center text-sm">
-              Haven't registered yet? <a href="#" className="text-red-500 hover:underline">Sign up</a>
+              Haven't registered yet? <a href="" className="text-red-500 hover:underline">Sign up</a>
             </div>
           </div>
         </div>
       </main>
 
       {/* Footer */}
-     <Footer />
+      <Footer />
     </div>
   );
 }

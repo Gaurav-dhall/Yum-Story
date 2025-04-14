@@ -4,8 +4,8 @@ const Nav = () => {
   return (
     <nav className="flex justify-between items-center px-8 py-4 bg-white">
     <div className="flex items-center">
-      <span className="text-black font-bold text-xl">Perfect</span>
-      <span className="text-red-400 font-bold text-xl">Recipe</span>
+      <span className="text-black font-bold text-xl">Yum</span>
+      <span className="text-red-400 font-bold text-xl">Story</span>
     </div>
     <div className="flex space-x-6">
       <a href="#" className=" text-gray-700 font-bold hover:text-red-400">Home</a>
