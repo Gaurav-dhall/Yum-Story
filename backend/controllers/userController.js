@@ -51,7 +51,13 @@ exports.loginUser=async(req,res)=>{
             }
 
             const token = jwt.sign({email: user.email , id: user._id }, process.env.JWT_SECRET);
-            res.cookie('token', token);
+            res.cookie('token', token,{
+                httpOnly: true,
+                secure: false, // Set to true if using https
+
+                sameSite: 'Lax', // Adjust as necessary
+                maxAge: 24 * 60 * 60 * 1000, // 1 day in milliseconds
+            });
             
             res.status(200).json({message:'Login successful', token})
             // You can also send user data if needed

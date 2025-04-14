@@ -2,9 +2,11 @@ import React from 'react';
   import Nav from '../components/Nav';
   import Footer from '../components/Footer'
   import fs from '../assets/fs.png'
+  import { useNavigate } from 'react-router-dom';
 
 
 const HomePage = () => {
+  const navigate = useNavigate();
 
   
   return (
@@ -24,7 +26,7 @@ const HomePage = () => {
           <p className="text-gray-600 mt-4 mb-8">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae enim pharetra, venenatis nunc eget, finibus est. Proin velit
           </p>
-          <button className="px-6 py-3 bg-red-400 text-white rounded hover:bg-red-500">Sign up</button>
+          <button onClick={() => navigate('/signup')} className="px-6 py-3 bg-red-400 text-white rounded hover:bg-red-500">Sign up</button>
           <p className="mt-4 text-sm text-gray-600">
             Do you have account? <a href="#" className="text-red-400">Log in</a>
           </p>

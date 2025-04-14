@@ -3,6 +3,8 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import signupImg from '../assets/signupImg.png'
 
 
 export default function PerfectRecipeSignup() {
@@ -23,7 +25,7 @@ export default function PerfectRecipeSignup() {
     }
 
     try {
-      const res = await axios.post('http://localhost:3000/api/users/register', {
+      const res = await axios.post('http://localhost:3000/users/register', {
         name,
         email,
         password
@@ -47,9 +49,9 @@ export default function PerfectRecipeSignup() {
           {/* Food Image */}
           <div className="w-full md:w-1/2">
             <img
-              src="/api/placeholder/500/500"
+              src={signupImg}
               alt="Healthy food bowl with vegetables and grains"
-              className="rounded-lg shadow-md w-full h-auto"
+              className="rounded-lg w-full h-auto"
             />
           </div>
 
@@ -129,40 +131,41 @@ export default function PerfectRecipeSignup() {
     </div>
   </div>
 
-  {/* Confirm Password Field */}
-  <div className="mb-4">
-    <label className="sr-only">Confirm Password</label>
-    <div className="relative">
-      <input
-        type="password"
-        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 focus:border-red-500"
-        placeholder="Confirm Password"
-        value={confirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
-        required
-      />
+ { /* Confirm Password Field */}
+    <div className="mb-4">
+      <label className="sr-only">Confirm Password</label>
+      <div className="relative">
+        <input
+          type="password"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 focus:border-red-500"
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+        />
+      </div>
     </div>
-  </div>
 
-  {/* Submit Button */}
-  <button
-    type="submit"
-    className="w-full bg-red-400 text-white py-2 px-4 rounded-md hover:bg-red-600 transition-colors"
-  >
-    Sign Up
-  </button>
-</form>
+    {/* Submit Button */}
+    <button
+      type="submit"
+      className="w-full bg-red-400 text-white py-2 px-4 rounded-md hover:bg-red-600 transition-colors"
+      
+    >
+      Sign Up
+    </button>
+  </form>
 
 
 
-            <div className="mt-6 text-center text-sm">
-          Already registered? <a href="#" className="text-red-500 hover:underline">Log in</a>
+              <div className="mt-6 text-center text-sm">
+            Already registered? <a href="#" className="text-red-500 hover:underline">Log in</a>
+              </div>
             </div>
           </div>
-        </div>
-      </main>
+        </main>
 
-      {/* Footer */}
+        {/* Footer */}
       <Footer />
     </div>
   );

@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Recipe = require('../models/RecipeModel')
+const Recipe = require('../models/RecipeModel');
+const { verifyToken } = require('../middlewares/authMiddleware');
 
-router.get('/', (req, res) => {
+router.get('/',verifyToken, (req, res) => {
     try{
         const recipes = Recipe.find()
         res.status(200).json(recipes)
