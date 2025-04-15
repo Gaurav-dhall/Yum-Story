@@ -4,6 +4,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import CreateRecipe from './pages/createRecipe'
 function App() {
   return (
     
@@ -14,6 +15,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/create-recipe" element={<CreateRecipe />} />
+        {/* Add more routes as needed */}
       </Routes>
     </Router>
   );
