@@ -21,7 +21,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
-        <Route path="/create-recipe" element={<CreateRecipe />} />
+        <Route path="/create-recipe" element={<ProtectedRoute><CreateRecipe /></ProtectedRoute>} />
         {/* Add more routes as needed */}
 
         <Route path="/feed" element={<ProtectedRoute><Feed /></ProtectedRoute>} />
