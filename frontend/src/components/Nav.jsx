@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Nav = () => {
+  const navigate = useNavigate();
   return (
     <nav className="flex justify-between items-center px-8 py-4 bg-white">
     <div className="flex items-center">
@@ -15,8 +17,12 @@ const Nav = () => {
       <a href="#" className="text-gray-700 font-bold hover:text-red-400">About us</a>
     </div>
     <div className="flex space-x-4">
-      <button className="px-4 py-2 text-gray-700 border border-gray-300 rounded hover:bg-gray-100">Log in</button>
-      <button className="px-4 py-2 bg-red-400 text-white rounded hover:bg-red-500">Sign up</button>
+      <button
+      onClick={() => navigate('/login')}
+       className="px-4 py-2 text-gray-700 border border-gray-300 rounded hover:bg-gray-100">Log in</button>
+      <button 
+      onClick={() => navigate('/signup')}
+      className="px-4 py-2 bg-red-400 text-white rounded hover:bg-red-500">Sign up</button>
     </div>
   </nav>
   )
