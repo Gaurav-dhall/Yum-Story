@@ -58,34 +58,35 @@ export default function RecipeWebsite() {
         variant: collection,
       };
 
-      // try {
-      //   // Make the API call
-      //   const response = await fetch('http://localhost:3000/recipe/create', {
-      //     method: 'POST',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //       // Add any auth headers if needed
-      //       // 'Authorization': 'Bearer yourTokenHere'
-      //     },
-      //     body: JSON.stringify(recipeData)
-      //   });
+      try {
+        // Make the API call
+        const response = await fetch('http://localhost:3000/recipes/create-recipe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            // Add any auth headers if needed
+            // 'Authorization': 'Bearer yourTokenHere'
+          },
+          credentials: 'include', 
+          body: JSON.stringify(recipeData)
+        });
 
-      //   // Handle the response
-      //   if (response.ok) {
-      //     const data = await response.json();
-      //     console.log('Recipe saved successfully:', data);
-      //     setSaveMessage('Recipe saved successfully!');
-      //     // You could redirect to the recipe page or do something else here
-      //   } else {
-      //     console.error('Failed to save recipe:', response.statusText);
-      //     setSaveMessage('Failed to save recipe. Please try again.');
-      //   }
-      // } catch (error) {
-      //   console.error('Error saving recipe:', error);
-      //   setSaveMessage('Error connecting to server. Please check your connection.');
-      // } finally {
-      //   setIsLoading(false);
-      // }
+        // Handle the response
+        const data = await response.json();
+        if (response.ok) {
+          
+          setSaveMessage('Recipe saved successfully!');
+          // You could redirect to the recipe page or do something else here
+        } else {
+          console.error('Failed to save recipe:', data.message);
+          setSaveMessage(`Failed to save recipe: ${data.message}`);
+        }
+      } catch (error) {
+        console.error('Error saving recipe:', error.message);
+        setSaveMessage('Error connecting to server. Please check your connection.');
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     const addInstruction = () => {
@@ -119,11 +120,7 @@ export default function RecipeWebsite() {
             
           </div>
           
-          {saveMessage && (
-            <div className={`p-2 mb-4 rounded ${saveMessage.includes('success') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-              {saveMessage}
-            </div>
-          )}
+          
   
           <div className="space-y-6">
             <div>
@@ -338,6 +335,12 @@ export default function RecipeWebsite() {
             >
               {isLoading ? 'Saving...' : 'Save'}
             </button>
+
+            {saveMessage && (
+            <div className={`p-2 mb-4 rounded ${saveMessage.includes('success') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+              {saveMessage}
+            </div>
+          )}
           </div>
         </main>
   
