@@ -346,5 +346,5 @@ export default function RecipeWebsite() {
   
        <Footer />
       </div>
-    );
+    ); 
   }
