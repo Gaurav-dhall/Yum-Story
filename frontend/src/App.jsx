@@ -5,6 +5,7 @@ import Contact from './pages/Contact'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import CreateRecipe from './pages/createRecipe'
+import ViewRecipe from './pages/ViewRecipe'
 function App() {
   return (
     
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/create-recipe" element={<CreateRecipe />} />
+        <Route path="/view-recipe" element={<ViewRecipe />} />
         {/* Add more routes as needed */}
       </Routes>
     </Router>
