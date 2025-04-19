@@ -13,7 +13,10 @@ const RecipeRoute=require('./routes/RecipeRoute')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173', // ya jo bhi frontend ka URL ho
+  credentials: true
+}));
 app.use(cookieParser());
 app.use(express.static('public'));
 mongoConnection(); // Connect to MongoDB

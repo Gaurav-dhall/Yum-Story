@@ -2,18 +2,46 @@ import React from 'react';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import logIn from '../assets/logIn.png'
+
 
 
 export default function PerfectRecipeLogin() {
+  const Navigate = useNavigate(); // 👈 useNavigate hook for navigation
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', { email, password, agreeTerms });
+  
+    try {
+      const response = await fetch('http://localhost:3000/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include', // 👈 super important for cookies to work
+        body: JSON.stringify({ email, password }),
+      });
+  
+      const data = await response.json();
+      console.log(data)
+  
+      if (response.ok) {
+        alert(data.msg || 'Login successful');
+        Navigate('/feed') // protected route
+      } else {
+        alert(data.message || 'Login failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Something went wrong.');
+    }
   };
+  
 
   return (
     <div className="bg-white min-h-screen">
@@ -26,9 +54,9 @@ export default function PerfectRecipeLogin() {
           {/* Food Image */}
           <div className="w-full md:w-1/2">
             <img
-              src="/api/placeholder/500/500"
+              src={logIn}
               alt="Healthy food bowl with vegetables and grains"
-              className="rounded-lg shadow-md w-full h-auto"
+              className="rounded-lg  w-full h-auto"
             />
           </div>
 

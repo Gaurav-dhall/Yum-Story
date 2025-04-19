@@ -9,6 +9,7 @@ const recipeSchema = new Schema({
          ref: 'User',
          required: true
      },
+     
     title: { 
         type: String, 
         required: true
@@ -22,7 +23,7 @@ const recipeSchema = new Schema({
 
     image: {
          type: String,
-          required: true
+          
          },
 
      rating: {
@@ -58,18 +59,23 @@ const recipeSchema = new Schema({
 
  
     prepTime: {
-         type: String,
-          required: true
+         type: Number,
+          
          },
 
     cookTime: { 
-        type: String,
-         required: true 
+        type: Number,
+         
         },
 
     servings: {
-         type: String,
+         type: Number,
           required: true
+         },
+
+    variant: {
+         type: String,
+          
          },
 
    

@@ -1,26 +1,22 @@
 import React from 'react'
 import { useState } from 'react';
 import { Search, Camera, Clock, ChevronDown, Twitter, Facebook, Instagram, AtSign } from 'lucide-react';
+import Footer from '../components/Footer'
+import Nav from '../components/Nav'
 
 export default function RecipeWebsite() {
-    const [recipeTitle, setRecipeTitle] = useState('Black Bean & Corn Quesadillas');
+    const [recipeTitle, setRecipeTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [ingredients, setIngredients] = useState([
-      '1 x 15 oz can black beans',
-      '1 cup corn'
-    ]);
+    const [ingredients, setIngredients] = useState([]);
     const [newIngredient, setNewIngredient] = useState('');
-    const [servings, setServings] = useState('');
-    const [cookHours, setCookHours] = useState('0');
-    const [cookMinutes, setCookMinutes] = useState('0');
-    const [prepHours, setPrepHours] = useState('0');
-    const [prepMinutes, setPrepMinutes] = useState('0');
+    const [servings, setServings] = useState(null);
+    const [cookHours, setCookHours] = useState('');
+    const [cookMinutes, setCookMinutes] = useState('');
+    const [prepHours, setPrepHours] = useState('');
+    const [prepMinutes, setPrepMinutes] = useState('');
     const [cuisine, setCuisine] = useState('Italian');
-    const [collection, setCollection] = useState('1 Collection selected');
-    const [instructions, setInstructions] = useState([
-      'In a medium bowl, mix together beans, corn, salsa, taco seasoning',
-      'Preheat a large skillet over medium low heat, sprayed with cooking spray. Place one tortilla in the skillet, and scoop 1/2 cup of the filling onto the tortilla in the pan. Sprinkle 1/4 cup cheese over the bean mixture, and place second tortilla on top of the cheese. Press down on top tortilla lightly with the back of your spatula, so you can meld the tortillas together. When the bottom tortilla begins to brown, flip the quesadilla over; until both tortillas are lightly browned and crisp and the cheese filling has melted. Cut into wedges if desired and enjoy!'
-    ]);
+    const [collection, setCollection] = useState('Breakfast');
+    const [instructions, setInstructions] = useState([]);
     const [newInstruction, setNewInstruction] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [saveMessage, setSaveMessage] = useState('');
@@ -59,37 +55,38 @@ export default function RecipeWebsite() {
         cookingTime: totalCookingTime,
         prepTime: totalPrepTime,
         cuisine: cuisine,
-        collection: collection
+        variant: collection,
       };
 
-      // try {
-      //   // Make the API call
-      //   const response = await fetch('http://localhost:3000/recipe/create', {
-      //     method: 'POST',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //       // Add any auth headers if needed
-      //       // 'Authorization': 'Bearer yourTokenHere'
-      //     },
-      //     body: JSON.stringify(recipeData)
-      //   });
+      try {
+        // Make the API call
+        const response = await fetch('http://localhost:3000/recipes/create-recipe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            // Add any auth headers if needed
+            // 'Authorization': 'Bearer yourTokenHere'
+          },
+          credentials: 'include', 
+          body: JSON.stringify(recipeData)
+        });
 
-      //   // Handle the response
-      //   if (response.ok) {
-      //     const data = await response.json();
-      //     console.log('Recipe saved successfully:', data);
-      //     setSaveMessage('Recipe saved successfully!');
-      //     // You could redirect to the recipe page or do something else here
-      //   } else {
-      //     console.error('Failed to save recipe:', response.statusText);
-      //     setSaveMessage('Failed to save recipe. Please try again.');
-      //   }
-      // } catch (error) {
-      //   console.error('Error saving recipe:', error);
-      //   setSaveMessage('Error connecting to server. Please check your connection.');
-      // } finally {
-      //   setIsLoading(false);
-      // }
+        // Handle the response
+        const data = await response.json();
+        if (response.ok) {
+          
+          setSaveMessage('Recipe saved successfully!');
+          // You could redirect to the recipe page or do something else here
+        } else {
+          console.error('Failed to save recipe:', data.message);
+          setSaveMessage(`Failed to save recipe: ${data.message}`);
+        }
+      } catch (error) {
+        console.error('Error saving recipe:', error.message);
+        setSaveMessage('Error connecting to server. Please check your connection.');
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     const addInstruction = () => {
@@ -108,30 +105,22 @@ export default function RecipeWebsite() {
   
     return (
       <div className="flex flex-col min-h-screen bg-white">
-        <header className="bg-white border-b border-gray-200 py-3 px-6 flex justify-between items-center">
+        {/* <header className="bg-white border-b border-gray-200 py-3 px-6 flex justify-between items-center">
           <div className="flex items-center">
-            <span className="font-bold text-lg">Perfect<span className="text-red-500">Recipe</span></span>
+            <span className="font-bold text-lg">Yum<span className="text-red-500">Story</span></span>
           </div>
          
         </header>
-  
+   */}
+
+   <Nav />
         <main className="flex-grow p-6 max-w-4xl mx-auto w-full">
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-semibold">Create new recipe</h1>
-            <button 
-              className={`${isLoading ? 'bg-gray-400' : 'bg-red-400 hover:bg-red-500'} text-white px-4 py-2 rounded`}
-              onClick={saveRecipe}
-              disabled={isLoading}
-            >
-              {isLoading ? 'Saving...' : 'Save'}
-            </button>
+            <h1 className="text-2xl font-semibold">Create new recipe🍽️</h1>
+            
           </div>
           
-          {saveMessage && (
-            <div className={`p-2 mb-4 rounded ${saveMessage.includes('success') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-              {saveMessage}
-            </div>
-          )}
+          
   
           <div className="space-y-6">
             <div>
@@ -140,6 +129,7 @@ export default function RecipeWebsite() {
                 type="text"
                 value={recipeTitle}
                 onChange={(e) => setRecipeTitle(e.target.value)}
+                placeholder='Enter recipe title'
                 className="w-full border border-gray-300 rounded p-2"
               />
             </div>
@@ -154,7 +144,7 @@ export default function RecipeWebsite() {
                 <div className="bg-gray-100 p-4 rounded flex justify-center">
                   <img 
                     src="/api/placeholder/350/200" 
-                    alt="Quesadilla" 
+                    alt="Recipe image" 
                     className="rounded object-cover w-64 h-36" 
                   />
                 </div>
@@ -163,13 +153,7 @@ export default function RecipeWebsite() {
                     <Camera size={20} className="text-red-500" />
                     <span className="ml-2 text-sm text-red-500">Add Photo</span>
                   </button>
-                  <div className="bg-red-100 p-1 border border-red-300 rounded">
-                    <img 
-                      src="/api/placeholder/60/60" 
-                      alt="Thumbnail" 
-                      className="w-14 h-14 object-cover rounded" 
-                    />
-                  </div>
+                 
                 </div>
               </div>
             </div>
@@ -192,6 +176,7 @@ export default function RecipeWebsite() {
                   <input
                     key={index}
                     type="text"
+                    placeholder={`Ingredient ${index + 1}`}
                     value={ingredient}
                     onChange={(e) => {
                       const newIngredients = [...ingredients];
@@ -206,16 +191,11 @@ export default function RecipeWebsite() {
                   value={newIngredient}
                   onChange={(e) => setNewIngredient(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Add ingredients"
+                  placeholder={`Ingridient ${ingredients.length + 1}`}
                   className="w-full border border-gray-300 rounded p-2"
                 />
               </div>
-              <button 
-                onClick={() => {}} 
-                className="text-red-500 text-sm mt-2 flex items-center"
-              >
-                + Header
-              </button>
+             
             </div>
   
             <div>
@@ -238,7 +218,7 @@ export default function RecipeWebsite() {
                 value={newInstruction}
                 onChange={(e) => setNewInstruction(e.target.value)}
                 onKeyPress={handleInstructionKeyPress}
-                placeholder="Write instruction"
+                placeholder={`Step ${instructions.length + 1}`}
                 className="w-full border border-gray-300 rounded p-2"
               />
               <button 
@@ -252,10 +232,10 @@ export default function RecipeWebsite() {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Servings:</label>
               <input
-                type="text"
+                type="number"
                 value={servings}
                 onChange={(e) => setServings(e.target.value)}
-                placeholder="4"
+                placeholder="Ex:- 4"
                 className="w-full border border-gray-300 rounded p-2"
               />
               <p className="text-xs text-gray-500 mt-1">How many portions does this recipe make?</p>
@@ -338,7 +318,6 @@ export default function RecipeWebsite() {
                   onChange={(e) => setCollection(e.target.value)}
                   className="w-full border border-gray-300 rounded p-2 pr-8 appearance-none"
                 >
-                  <option value="1 Collection selected">1 Collection selected</option>
                   <option value="Dinner">Dinner</option>
                   <option value="Lunch">Lunch</option>
                   <option value="Breakfast">Breakfast</option>
@@ -348,43 +327,24 @@ export default function RecipeWebsite() {
                 </div>
               </div>
             </div>
+
+            <button 
+              className={`${isLoading ? 'bg-gray-400' : 'bg-red-400 hover:bg-red-500'} text-white px-4 py-2 rounded`}
+              onClick={saveRecipe}
+              disabled={isLoading}
+            >
+              {isLoading ? 'Saving...' : 'Save'}
+            </button>
+
+            {saveMessage && (
+            <div className={`p-2 mb-4 rounded ${saveMessage.includes('success') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+              {saveMessage}
+            </div>
+          )}
           </div>
         </main>
   
-        <div className="fixed bottom-20 left-4 bg-white shadow-lg rounded-md p-2 border border-gray-200 flex space-x-2">
-          <button className="p-2 bg-blue-50 rounded hover:bg-blue-100">
-            <div className="w-5 h-5 flex items-center justify-center text-blue-500">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-                <path d="M20 12H4M4 12L10 6M4 12L10 18" />
-              </svg>
-            </div>
-          </button>
-          <button className="p-2 hover:bg-gray-100 rounded">
-            <div className="w-5 h-5 flex items-center justify-center text-gray-500">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-              </svg>
-            </div>
-          </button>
-          <button className="p-2 hover:bg-gray-100 rounded">
-            <div className="w-5 h-5 flex items-center justify-center text-gray-500">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 16v-4M12 8h.01" />
-              </svg>
-            </div>
-          </button>
-          <button className="px-3 py-1 bg-gray-200 rounded text-xs font-medium hover:bg-gray-300">
-            View only
-          </button>
-          <button className="p-2 hover:bg-gray-100 rounded">
-            <div className="w-5 h-5 flex items-center justify-center text-gray-500">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-                <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
-              </svg>
-            </div>
-          </button>
-        </div>
+       <Footer />
       </div>
     ); 
   }
