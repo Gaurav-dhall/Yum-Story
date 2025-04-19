@@ -28,7 +28,7 @@ const HomePage = () => {
           </p>
           <button onClick={() => navigate('/signup')} className="px-6 py-3 bg-red-400 text-white rounded hover:bg-red-500">Sign up</button>
           <p className="mt-4 text-sm text-gray-600">
-            Do you have account? <a href="#" className="text-red-400">Log in</a>
+            Do you have account? <a href="/login" className="text-red-400">Log in</a>
           </p>
         </div>
         <div className="w-1/2 relative">

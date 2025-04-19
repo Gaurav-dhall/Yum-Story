@@ -67,3 +67,12 @@ exports.getClickedRecipe = async(req, res) => {
       
             
     }
+
+    exports.uploadImage = (req, res) => {
+        if (!req.file) {
+          return res.status(400).json({ message: 'No file uploaded' });
+        }
+
+        // Send back image URL/path
+        res.status(200).json({ imagePath: `/uploads/${req.file.filename}` });
+      }

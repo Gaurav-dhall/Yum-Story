@@ -159,7 +159,7 @@ export default function PerfectRecipeSignup() {
 
 
               <div className="mt-6 text-center text-sm">
-            Already registered? <a href="#" className="text-red-500 hover:underline">Log in</a>
+            Already registered? <a href="/login" className="text-red-500 hover:underline">Log in</a>
               </div>
             </div>
           </div>

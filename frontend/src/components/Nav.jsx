@@ -35,7 +35,6 @@ const Nav = () => {
 >
   Add Recipe
 </a>
-<a href="#" className={` font-bold hover:text-red-400 ${isActive('/blog')}`}>Blog</a>
 <a href="#" className={`font-bold hover:text-red-400 ${isActive('/about-us')}`}>About us</a>
 
     </div>
