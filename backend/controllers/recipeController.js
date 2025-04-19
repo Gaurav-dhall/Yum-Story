@@ -29,7 +29,7 @@ exports.getClickedRecipe = async(req, res) => {
 
    exports.createRecipe = async (req, res) => {
         try {
-            const { createdBy,title,description,createdAt,ingredients,instructions,cuisine,prepTime,cookTime,servings,variant
+            const { createdBy,image,title,description,createdAt,ingredients,instructions,cuisine,prepTime,cookTime,servings,variant
             } = req.body;
 
             if (!title || !description || !ingredients || !instructions || !cuisine) {
@@ -42,6 +42,7 @@ exports.getClickedRecipe = async(req, res) => {
                 title,
                 description,
                 createdAt,
+                image,
                 ingredients,
                 instructions,
                 cuisine,

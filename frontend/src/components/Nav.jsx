@@ -24,7 +24,11 @@ const Nav = () => {
     navigate('/');
   }}
    className={` font-bold hover:text-red-400 ${isActive('/')}`}>Home</a>
-<a href="#" className={` font-bold hover:text-red-400 ${isActive('/recipe')}`}>Recipe</a>
+<a href=""  onClick={(e) => {
+    e.preventDefault();
+    navigate('/recipes');
+  }}
+   className={` font-bold hover:text-red-400 ${isActive('/recipes')}`}>Recipes</a>
 <a 
   href=''
   onClick={(e) => {

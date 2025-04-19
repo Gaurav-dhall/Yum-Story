@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
+import axios from "axios";
 
 export default function RecipeWebsite() {
   const [recipeTitle, setRecipeTitle] = useState("");
@@ -29,6 +30,35 @@ export default function RecipeWebsite() {
   const [newInstruction, setNewInstruction] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
+  const [imagePath, setImagePath] = useState('');
+  const [selectedFile, setSelectedFile] = useState(null);
+
+
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
+  const handleImageUpload = async () => {
+    if (!selectedFile) return alert("Please select an image");
+
+    const formData = new FormData();
+    formData.append("avatar", selectedFile);
+
+    try {
+      const res = await axios.post("http://localhost:3000/recipes/upload-image", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      setImagePath(res.data.imagePath); // Assuming backend returns { imagePath: '/uploads/abc.jpg' }
+      alert("Image uploaded successfully!");
+      console.log(imagePath);
+    } catch (err) {
+      console.error("Upload failed:", err);
+      alert("Image upload failed");
+    }
+  };
 
   const addIngredient = () => {
     if (newIngredient.trim() !== "") {
@@ -65,6 +95,7 @@ export default function RecipeWebsite() {
       prepTime: totalPrepTime,
       cuisine: cuisine,
       variant: collection,
+      image:imagePath,
     };
 
     try {
@@ -158,11 +189,13 @@ export default function RecipeWebsite() {
                   className="rounded object-cover w-64 h-36"
                 />
               </div> */}
-              <form
-                action="http://localhost:3000/recipes/upload-image"
-                method="POST"
-                encType="multipart/form-data"
-              >
+
+{imagePath && (
+        <div className="mb-4">
+          <img src={`http://localhost:3000${imagePath}`} alt="Preview" className="w-64 h-36 object-cover rounded" />
+        </div>
+      )}
+             
                 <div className="flex items-center justify-center mt-2 space-x-2">
                   <div className="bg-gray-100 p-4 flex-1 rounded flex items-center justify-center">
                     <Camera size={20} className="text-red-500" />
@@ -170,13 +203,14 @@ export default function RecipeWebsite() {
                       className="ml-2 mr-2 text-sm text-red-500 w-full h-full"
                       type="file"
                       name="avatar"
+                      onChange={handleFileChange}
                     />
                   </div>
                 </div>
 
                 <div className="bg-gray-100 rounded flex items-center justify-between mt-2">
                   <button
-                    type="submit"
+                    onClick={handleImageUpload}
                     className="text-red-500 text-xs cursor-pointer px-2 py-1 border border-red-500 rounded-sm m-1"
                   >
                     Save Image
@@ -188,7 +222,7 @@ export default function RecipeWebsite() {
                     Change image
                   </button>
                 </div>
-              </form>
+            
             </div>
           </div>
 
