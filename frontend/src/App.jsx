@@ -21,7 +21,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/view-recipe" element={<ViewRecipe />} />
+        <Route path="/recipes/:id" element={<ViewRecipe />} />
 
         <Route path="/create-recipe" element={<ProtectedRoute><CreateRecipe /></ProtectedRoute>} />
         {/* Add more routes as needed */}

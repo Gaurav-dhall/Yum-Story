@@ -12,10 +12,10 @@ const Nav = () => {
 
   return (
     <nav className="flex justify-between items-center px-8 py-4 bg-white">
-    <div className="flex items-center">
+    <a href="/" className="flex items-center">
       <span className="text-black font-bold text-xl">Yum</span>
       <span className="text-red-400 font-bold text-xl">Story</span>
-    </div>
+    </a>
     <div className="flex space-x-6">
 
 

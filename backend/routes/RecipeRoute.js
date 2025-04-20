@@ -5,7 +5,7 @@ const { verifyToken } = require('../middlewares/authMiddleware');
 const recipeController=require('../controllers/recipeController')
 const upload = require('../config/multerConfig');
 
-router.get('/',verifyToken,recipeController.getAllRecipes);
+router.get('/',recipeController.getAllRecipes);
 
 router.get('/:id', recipeController.getClickedRecipe);
 

@@ -91,7 +91,7 @@ export default function RecipeWebsite() {
       ingredients: ingredients,
       instructions: instructions,
       servings: servings,
-      cookingTime: totalCookingTime,
+      cookTime: totalCookingTime,
       prepTime: totalPrepTime,
       cuisine: cuisine,
       variant: collection,

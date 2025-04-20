@@ -32,7 +32,7 @@ export default function PerfectRecipeLogin() {
   
       if (response.ok) {
         alert(data.msg || 'Login successful');
-        Navigate('/feed') // protected route
+        Navigate('/recipes') // protected route
       } else {
         alert(data.message || 'Login failed');
       }
