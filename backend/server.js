@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const port = process.env.PORT || 3000;
 const mongoConnection =require('./config/db')
 const cookieParser = require('cookie-parser');
+const path = require('path');
 
 const index=require('./routes/index');
 const UserRoute=require('./routes/UserRoute')
@@ -17,6 +18,7 @@ app.use(cors({
   origin: 'http://localhost:5173', // ya jo bhi frontend ka URL ho
   credentials: true
 }));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cookieParser());
 app.use(express.static('public'));
 mongoConnection(); // Connect to MongoDB

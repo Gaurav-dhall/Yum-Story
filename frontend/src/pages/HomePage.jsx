@@ -28,7 +28,7 @@ const HomePage = () => {
           </p>
           <button onClick={() => navigate('/signup')} className="px-6 py-3 bg-red-400 text-white rounded hover:bg-red-500">Sign up</button>
           <p className="mt-4 text-sm text-gray-600">
-            Do you have account? <a href="#" className="text-red-400">Log in</a>
+            Do you have account? <a href="/login" className="text-red-400">Log in</a>
           </p>
         </div>
         <div className="w-1/2 relative">
@@ -84,7 +84,7 @@ const HomePage = () => {
           <p className="text-gray-600 mb-8 max-w-lg mx-auto">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae enim pharetra, venenatis nunc eget, finibus est. Proin velit
           </p>
-          <button className="px-6 py-3 bg-red-400 text-white rounded hover:bg-red-500">Create New Recipe</button>
+          <button onClick={() => navigate('/create-recipe')} className="px-6 py-3 bg-red-400 text-white rounded hover:bg-red-500">Create New Recipe</button>
         </div>
       </div>
     </section>
@@ -92,7 +92,7 @@ const HomePage = () => {
     {/* TRENDING RECIPES SECTION */}
 
    {/* TRENDING RECIPES SECTION */}
-<section className="px-8 py-24 bg-gray-50">
+   <section className="px-8 py-24 bg-gray-50">
   <h2 className="text-4xl font-bold mb-8 text-center">
     Trending <span className="text-red-400">Recipes</span>
   </h2>
@@ -100,7 +100,7 @@ const HomePage = () => {
     {/* Card 1 */}
     <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
       <img
-        src="/api/placeholder/400/300"
+        src="https://images.unsplash.com/photo-1608039755401-742074f0548d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80"
         alt="Onion Rings"
         className="w-full h-48 object-cover"
       />
@@ -121,7 +121,7 @@ const HomePage = () => {
     {/* Card 2 */}
     <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
       <img
-        src="/api/placeholder/400/300"
+        src="https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80"
         alt="Toast with Tomato, Onion, & Hummus"
         className="w-full h-48 object-cover"
       />
@@ -142,7 +142,7 @@ const HomePage = () => {
     {/* Card 3 */}
     <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
       <img
-        src="/api/placeholder/400/300"
+        src="https://images.unsplash.com/photo-1600335895229-6e75511892c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80"
         alt="Ham, Egg, and Spinach Roll-Ups"
         className="w-full h-48 object-cover"
       />
@@ -163,7 +163,7 @@ const HomePage = () => {
     {/* Card 4 */}
     <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
       <img
-        src="/api/placeholder/400/300"
+        src="https://images.unsplash.com/photo-1551782450-17144efb9c50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80"
         alt="Chicken Ranch Wrap"
         className="w-full h-48 object-cover"
       />
@@ -184,7 +184,7 @@ const HomePage = () => {
     {/* Card 5 */}
     <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
       <img
-        src="/api/placeholder/400/300"
+        src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80"
         alt="Tuna Mex Tuna Salad"
         className="w-full h-48 object-cover"
       />
@@ -205,7 +205,7 @@ const HomePage = () => {
     {/* Card 6 */}
     <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
       <img
-        src="/api/placeholder/400/300"
+        src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80"
         alt="Strawberry and Cherry Pancake"
         className="w-full h-48 object-cover"
       />
@@ -224,7 +224,6 @@ const HomePage = () => {
     </div>
   </div>
 </section>
-
 <Footer />
 
     

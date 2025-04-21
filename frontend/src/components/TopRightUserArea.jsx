@@ -8,12 +8,14 @@ export default function TopRightUserArea() {
   
     useEffect(() => {
       axios.get('http://localhost:3000/users/profile', { withCredentials: true })
+     
         .then((res) => {
           setUser(res.data); // You can store name/email too
         })
         .catch(() => {
           setUser(null); // not logged in
         });
+        
     }, []);
 
     return (
@@ -37,6 +39,7 @@ export default function TopRightUserArea() {
       
         {/* ✅ Dropdown stays visible while hovering */}
         <div className="absolute right-0  w-32 bg-white shadow-lg rounded-md opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-opacity duration-200 z-50">
+          <p className="px-4 py-2 text-xs text-gray-700">Hello,{user.name}👋🏻</p>
           <button
             className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
             onClick={() => navigate('/profile')}

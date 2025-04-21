@@ -11,6 +11,7 @@ const Nav = () => {
   const isActive = (path) =>
     location.pathname === path ? 'text-red-400' : 'text-gray-700';
 
+
   const handleNavigation = (e, path) => {
     e.preventDefault();
     navigate(path);
@@ -18,23 +19,56 @@ const Nav = () => {
   };
 
   return (
-    <nav className="bg-white px-6 py-4 shadow-md">
-      <div className="flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center">
-          <span className="text-black font-bold text-xl">Yum</span>
-          <span className="text-red-400 font-bold text-xl">Story</span>
-        </div>
+    <nav className="flex justify-between items-center px-8 py-4 bg-white">
+    <a href="/" className="flex items-center">
+      <span className="text-black font-bold text-xl">Yum</span>
+      <span className="text-red-400 font-bold text-xl">Story</span>
+    </a>
+    <div className="flex space-x-6">
 
-        {/* Desktop Nav Links */}
-        <div className="hidden md:flex space-x-6 items-center">
-          <a href="/" onClick={(e) => handleNavigation(e, '/')} className={`font-bold hover:text-red-400 ${isActive('/')}`}>Home</a>
-          <a href="/recipe" onClick={(e) => handleNavigation(e, '/recipe')} className={`font-bold hover:text-red-400 ${isActive('/recipe')}`}>Recipe</a>
-          <a href="/create-recipe" onClick={(e) => handleNavigation(e, '/create-recipe')} className={`font-bold hover:text-red-400 ${isActive('/create-recipe')}`}>Add Recipe</a>
-          <a href="/blog" onClick={(e) => handleNavigation(e, '/blog')} className={`font-bold hover:text-red-400 ${isActive('/blog')}`}>Blog</a>
-          <a href="/about-us" onClick={(e) => handleNavigation(e, '/about-us')} className={`font-bold hover:text-red-400 ${isActive('/about-us')}`}>About us</a>
-          <TopRightUserArea />
-        </div>
+
+//   return (
+//     <nav className="bg-white px-6 py-4 shadow-md">
+//       <div className="flex items-center justify-between">
+//         {/* Logo */}
+//         <div className="flex items-center">
+//           <span className="text-black font-bold text-xl">Yum</span>
+//           <span className="text-red-400 font-bold text-xl">Story</span>
+//         </div>
+
+
+//         {/* Desktop Nav Links */}
+//         <div className="hidden md:flex space-x-6 items-center">
+//           <a href="/" onClick={(e) => handleNavigation(e, '/')} className={`font-bold hover:text-red-400 ${isActive('/')}`}>Home</a>
+//           <a href="/recipe" onClick={(e) => handleNavigation(e, '/recipe')} className={`font-bold hover:text-red-400 ${isActive('/recipe')}`}>Recipe</a>
+//           <a href="/create-recipe" onClick={(e) => handleNavigation(e, '/create-recipe')} className={`font-bold hover:text-red-400 ${isActive('/create-recipe')}`}>Add Recipe</a>
+//           <a href="/blog" onClick={(e) => handleNavigation(e, '/blog')} className={`font-bold hover:text-red-400 ${isActive('/blog')}`}>Blog</a>
+//           <a href="/about-us" onClick={(e) => handleNavigation(e, '/about-us')} className={`font-bold hover:text-red-400 ${isActive('/about-us')}`}>About us</a>
+//           <TopRightUserArea />
+//         </div>
+
+    <a href="" onClick={(e) => {
+    e.preventDefault();
+    navigate('/');
+  }}
+   className={` font-bold hover:text-red-400 ${isActive('/')}`}>Home</a>
+<a href=""  onClick={(e) => {
+    e.preventDefault();
+    navigate('/recipes');
+  }}
+   className={` font-bold hover:text-red-400 ${isActive('/recipes')}`}>Recipes</a>
+<a 
+  href=''
+  onClick={(e) => {
+    e.preventDefault();
+    navigate('/create-recipe');
+  }}
+  className={` font-bold hover:text-red-400 ${isActive('/create-recipe')}`}
+>
+  Add Recipe
+</a>
+<a href="#" className={`font-bold hover:text-red-400 ${isActive('/about-us')}`}>About us</a>
+
 
         {/* Hamburger for Mobile */}
         <div className="md:hidden flex items-center">
