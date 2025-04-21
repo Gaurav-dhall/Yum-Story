@@ -10,19 +10,19 @@ export default function About() {
       name: "Sara Johnson",
       role: "Head Chef",
       description: "With 15 years of culinary experience, Sara brings creativity and passion to every recipe.",
-      image: "https://via.placeholder.com/80", // Replace with a valid image URL
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
     },
     {
       name: "Michael Chen",
       role: "Nutritionist",
       description: "Michael ensures all our recipes maintain the perfect balance of flavor and nutrition.",
-      image: "https://via.placeholder.com/80", // Replace with a valid image URL
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
     },
     {
       name: "Priya Patel",
       role: "Food Photographer",
       description: "Priya captures the beauty of food through her artistic lens.",
-      image: "https://via.placeholder.com/80", // Replace with a valid image URL
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
     },
   ];
 
@@ -34,7 +34,7 @@ export default function About() {
       <header className="p-8">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-5xl font-bold">
-            About <span className="text-red-400">Your Daily Dish</span>
+            About <span className="text-red-400">Yum Story</span>
           </h1>
           <h2 className="text-3xl mt-2">Our Story & Mission</h2>
         </div>
@@ -45,7 +45,7 @@ export default function About() {
         <div className="lg:w-1/2">
           <h3 className="text-2xl font-semibold mb-4">Our Journey</h3>
           <p className="mb-4 text-gray-700">
-            Founded in 2020, Your Daily Dish began as a simple blog sharing family recipes. Today, we've grown into a community of food enthusiasts dedicated to making healthy eating accessible, enjoyable, and delicious for everyone.
+            Founded in 2020, Yum Story began as a simple blog sharing family recipes. Today, we've grown into a community of food enthusiasts dedicated to making healthy eating accessible, enjoyable, and delicious for everyone.
           </p>
           <p className="mb-4 text-gray-700">
             We believe that good food brings people together and nourishes both body and soul. Every recipe we share is carefully crafted, tested, and photographed in our own kitchens.
@@ -73,7 +73,7 @@ export default function About() {
         <div className="lg:w-1/2">
           <div className="relative h-96 rounded-lg overflow-hidden shadow-lg">
             <img
-              src="https://via.placeholder.com/600x400" // Replace with a valid image URL
+              src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Our kitchen team at work"
               className="w-full h-full object-cover"
             />
