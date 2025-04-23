@@ -15,7 +15,7 @@ const RecipeRoute=require('./routes/RecipeRoute')
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-  origin: ['http://localhost:5173',"https://yum-story.vercel.app/"] // ya jo bhi frontend ka URL ho
+  origin: ['http://localhost:5173',"https://yum-story.vercel.app/"], // ya jo bhi frontend ka URL ho
   credentials: true
 }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
