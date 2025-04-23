@@ -30,6 +30,10 @@ app.use('/', index);
 app.use('/users', UserRoute);
 app.use('/recipes', RecipeRoute);
 
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'Backend is working!' });
+});
+
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
