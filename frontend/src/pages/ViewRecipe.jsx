@@ -25,7 +25,7 @@ const findNutrientValue = (nutrients, nutrientName) => {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/recipes/${id}`)
+    axios.get(`${import.meta.env.VITE_API_BASE_URL}/recipes/${id}`)
       .then((res) => setRecipe(res.data))
       .catch((err) => console.error(err));
   }, [id]);
@@ -120,7 +120,7 @@ const findNutrientValue = (nutrients, nutrientName) => {
           {/* Recipe Image */}
           <div className="mb-6">
             <img 
-              src={`http://localhost:3000${recipe.image}`}
+              src={`${import.meta.env.VITE_API_BASE_URL}${recipe.image}`}
               alt="Mixed Greens with Sun-Dried Tomato Dressing" 
               className="w-full h-auto rounded-lg"
             />
@@ -186,7 +186,7 @@ const findNutrientValue = (nutrients, nutrientName) => {
           <div className="lg:hidden mb-6 border rounded-lg p-4">
             <div className="flex items-center mb-4">
               <img 
-                src={`http://localhost:3000${recipe.image}`}
+                src={`${import.meta.env.VITE_API_BASE_URL}${recipe.image}`}
                 alt="Recipe thumbnail" 
                 className="w-20 h-20 rounded-md mr-4"
               />

@@ -8,7 +8,7 @@ export default function TopRightUserArea() {
     const [dropdownOpen, setDropdownOpen] = useState(false); // State to manage dropdown visibility
   
     useEffect(() => {
-      axios.get('http://localhost:3000/users/profile', { withCredentials: true })
+      axios.get(`${import.meta.env.VITE_API_BASE_URL}/users/profile`, { withCredentials: true })
      
         .then((res) => {
           setUser(res.data); // You can store name/email too
@@ -54,7 +54,7 @@ export default function TopRightUserArea() {
           <button
           className="block w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-gray-100"
           onClick={async () => {
-            await axios.get('http://localhost:3000/users/logout', { withCredentials: true });
+            await axios.get(`${import.meta.env.VITE_API_BASE_URL}/users/logout`, { withCredentials: true });
             alert('Logout successful');
             setUser(null);
             navigate('/login');

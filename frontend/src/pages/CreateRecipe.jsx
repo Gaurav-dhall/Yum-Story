@@ -45,7 +45,7 @@ export default function RecipeWebsite() {
     formData.append("avatar", selectedFile);
 
     try {
-      const res = await axios.post("http://localhost:3000/recipes/upload-image", formData, {
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/recipes/upload-image`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -101,7 +101,7 @@ export default function RecipeWebsite() {
     try {
       // Make the API call
       const response = await fetch(
-        "http://localhost:3000/recipes/create-recipe",
+        `${import.meta.env.VITE_API_BASE_URL}/recipes/create-recipe`,
         {
           method: "POST",
           headers: {
@@ -192,7 +192,7 @@ export default function RecipeWebsite() {
 
 {imagePath && (
         <div className="mb-4">
-          <img src={`http://localhost:3000${imagePath}`} alt="Preview" className="w-64 h-36 object-cover rounded" />
+          <img src={`${import.meta.env.VITE_API_BASE_URL}${imagePath}`} alt="Preview" className="w-64 h-36 object-cover rounded" />
         </div>
       )}
              

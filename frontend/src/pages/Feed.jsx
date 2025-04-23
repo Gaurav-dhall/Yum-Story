@@ -9,7 +9,7 @@ const Feed = () => {
   const navigate = useNavigate(); // 👈 useNavigate hook for navigation
 
   useEffect(() => {
-    axios.get('http://localhost:3000/recipes/')
+    axios.get(`${import.meta.env.VITE_API_BASE_URL}/recipes/`)
       .then(response => {
         setRecipes(response.data); // Adjust if your data structure differs
       })
@@ -29,7 +29,7 @@ const Feed = () => {
           {recipes.map((recipe) => (
             <div key={recipe._id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition ">
               <img
-                src={`http://localhost:3000${recipe.image}`}
+                src={`${import.meta.env.VITE_API_BASE_URL}${recipe.image}`}
                 alt={recipe.title}
                 className="w-full h-48 object-cover"
               />
