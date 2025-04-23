@@ -14,7 +14,7 @@ const UserRoute=require('./routes/UserRoute')
 const RecipeRoute=require('./routes/RecipeRoute')
 
 app.use(cors({
-  origin: ['http://localhost:5173',"https://yum-story.vercel.app/"], // ya jo bhi frontend ka URL ho
+  origin:'https://yum-story.vercel.app/', // ya jo bhi frontend ka URL ho
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 }));
