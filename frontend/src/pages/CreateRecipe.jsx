@@ -38,7 +38,7 @@ export default function RecipeWebsite() {
     setSelectedFile(e.target.files[0]);
   };
 
-  const handleImageUpload = async () => {
+  const handleImageUpload = async (event) => {
     const file = event.target.files[0];
     if (!file) {
       console.error('No file selected');
