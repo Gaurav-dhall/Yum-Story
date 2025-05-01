@@ -75,10 +75,15 @@ exports.getClickedRecipe = async(req, res) => {
     }
 
     exports.uploadImage = (req, res) => {
-        if (!req.file) {
-          return res.status(400).json({ message: 'No file uploaded' });
-        }
-
-        // Send back image URL/path
-        res.status(200).json({ imagePath: `/uploads/${req.file.filename}` });
+        const stream = cloudinary.uploader.upload_stream(
+            { resource_type: 'image' },
+            (error, result) => {
+              if (error) {
+                console.error('Upload failed:', error);
+                return res.status(500).json({ message: 'Upload failed' });
+              }
+              res.json({ imagePath: result.secure_url });
+            }
+          );
+          stream.end(req.file.buffer);
       }

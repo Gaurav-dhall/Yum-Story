@@ -37,6 +37,7 @@ exports.loginUser=async(req,res)=>{
     if(!email || !password){
         return res.status(400).json({message:'Please fill all fields'})
     }
+    
     try {
         const user=await User.findOne({email})
         if(!user){

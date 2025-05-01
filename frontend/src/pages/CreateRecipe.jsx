@@ -192,7 +192,7 @@ export default function RecipeWebsite() {
 
 {imagePath && (
         <div className="mb-4">
-          <img src={`${import.meta.env.VITE_API_BASE_URL}${imagePath}`} alt="Preview" className="w-64 h-36 object-cover rounded" />
+          <img src={imagePath} alt="Preview" className="w-64 h-36 object-cover rounded" />
         </div>
       )}
              

@@ -29,7 +29,7 @@ const Feed = () => {
           {recipes.map((recipe) => (
             <div key={recipe._id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition ">
               <img
-                src={`${import.meta.env.VITE_API_BASE_URL}${recipe.image}`}
+                src={recipe.image}
                 alt={recipe.title}
                 className="w-full h-48 object-cover"
               />
