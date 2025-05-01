@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Search,
   Camera,
@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
+
 import axios from "axios";
 
 export default function RecipeWebsite() {
@@ -32,14 +33,15 @@ export default function RecipeWebsite() {
   const [saveMessage, setSaveMessage] = useState("");
   const [imagePath, setImagePath] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
+  const fileInputRef = useRef(null);
 
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
 
-  const handleImageUpload = async (event) => {
-    const file = event.target.files[0];
+  const handleImageUpload = async () => {
+    const file = fileInputRef.current.files[0];
     if (!file) {
       console.error('No file selected');
       return;
