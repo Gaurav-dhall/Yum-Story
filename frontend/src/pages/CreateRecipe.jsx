@@ -39,10 +39,13 @@ export default function RecipeWebsite() {
   };
 
   const handleImageUpload = async () => {
-    if (!selectedFile) return alert("Please select an image");
-
+    const file = event.target.files[0];
+    if (!file) {
+      console.error('No file selected');
+      return;
+    }
     const formData = new FormData();
-    formData.append("avatar", selectedFile);
+    formData.append('avatar', file);
 
     try {
       const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/recipes/upload-image`, formData, {

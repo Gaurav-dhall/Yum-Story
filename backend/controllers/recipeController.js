@@ -75,6 +75,10 @@ exports.getClickedRecipe = async(req, res) => {
     }
 
     exports.uploadImage = (req, res) => {
+        const { file } = req;
+        if (!file) {
+            return res.status(400).json({ message: 'No file uploaded' });
+        }
         const stream = cloudinary.uploader.upload_stream(
             { resource_type: 'image' },
             (error, result) => {
