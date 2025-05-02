@@ -55,6 +55,7 @@ exports.loginUser=async(req,res)=>{
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
                 sameSite: 'lax',
+                domain: 'yum-story.vercel.app',
                 path: '/',
                 maxAge: 24 * 60 * 60 * 1000 // 1 day
             });
@@ -72,6 +73,7 @@ exports.logoutUser=async(req,res)=>{
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax',
+        domain: 'yum-story.vercel.app',
         path: '/'
     });
     res.status(200).json({message:'Logout successful'})
