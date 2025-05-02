@@ -53,9 +53,9 @@ exports.loginUser=async(req,res)=>{
             const token = jwt.sign({email: user.email , id: user._id }, process.env.JWT_SECRET);
             res.cookie('token', token, {
                 httpOnly: true,
-                secure: process.env.NODE_ENV === 'production',
-                sameSite: 'lax',
+                sameSite: 'none',
                 domain: 'yum-story.vercel.app',
+                secure: true,
                 path: '/',
                 maxAge: 24 * 60 * 60 * 1000 // 1 day
             });
@@ -71,8 +71,8 @@ exports.loginUser=async(req,res)=>{
 exports.logoutUser=async(req,res)=>{    
     res.clearCookie('token', {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
+        secure: true,
+        sameSite: 'none',
         domain: 'yum-story.vercel.app',
         path: '/'
     });
