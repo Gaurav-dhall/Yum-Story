@@ -24,9 +24,14 @@ cloudinary.config({
 });
 
 app.use(cors({
-  origin:'https://yum-story.vercel.app', // ya jo bhi frontend ka URL ho
+  origin: [
+    'https://yum-story.vercel.app',
+    'https://yum-story-gaurav-dhalls-projects.vercel.app/',
+    'http://localhost:5173' // Development environment
+  ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
