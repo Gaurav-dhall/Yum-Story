@@ -54,9 +54,10 @@ exports.loginUser=async(req,res)=>{
             res.cookie('token', token, {
                 httpOnly: true,
                 sameSite: 'none',
-                domain: 'yum-story.vercel.app',
+               
                 secure: true,
                 path: '/',
+               
                 maxAge: 24 * 60 * 60 * 1000 // 1 day
             });
             
@@ -73,8 +74,7 @@ exports.logoutUser=async(req,res)=>{
         httpOnly: true,
         secure: true,
         sameSite: 'none',
-        domain: 'yum-story.vercel.app',
-        path: '/'
+        path: '/',
     });
     res.status(200).json({message:'Logout successful'})
 }
