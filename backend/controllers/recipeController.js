@@ -1,6 +1,6 @@
 const Recipe = require('../models/RecipeModel');
 const User = require('../models/UserModel');
-
+const cloudinary = require('cloudinary').v2;
 
 exports.getAllRecipes = async(req, res) => {
     try {
@@ -75,19 +75,26 @@ exports.getClickedRecipe = async(req, res) => {
     }
 
     exports.uploadImage = (req, res) => {
-        const { file } = req;
-        if (!file) {
-            return res.status(400).json({ message: 'No file uploaded' });
-        }
-        const stream = cloudinary.uploader.upload_stream(
-            { resource_type: 'image' },
-            (error, result) => {
-              if (error) {
-                console.error('Upload failed:', error);
-                return res.status(500).json({ message: 'Upload failed' });
-              }
-              res.json({ imagePath: result.secure_url });
+        try {
+            const { file } = req;
+            if (!file) {
+                return res.status(400).json({ message: 'No file uploaded' });
             }
-          );
-          stream.end(req.file.buffer);
-      }
+            
+            const stream = cloudinary.uploader.upload_stream(
+                { resource_type: 'image' },
+                (error, result) => {
+                    if (error) {
+                        console.error('Cloudinary upload error:', error);
+                        return res.status(500).json({ message: 'Upload failed', error: error.message });
+                    }
+                    res.json({ imagePath: result.secure_url });
+                }
+            );
+            
+            stream.end(req.file.buffer);
+        } catch (error) {
+            console.error('Upload error:', error);
+            res.status(500).json({ message: 'Server error during upload', error: error.message });
+        }
+    }
