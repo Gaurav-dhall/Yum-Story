@@ -1,9 +1,8 @@
 import React from 'react';
-  import Nav from '../components/Nav';
-  import Footer from '../components/Footer'
-  import fs from '../assets/fs.png'
-  import { useNavigate } from 'react-router-dom';
-
+import Nav from '../components/Nav';
+import Footer from '../components/Footer'
+import fs from '../assets/fs.png'
+import { useNavigate, Link } from 'react-router-dom';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -32,7 +31,7 @@ const HomePage = () => {
       </p>
       <button onClick={() => navigate('/signup')} className="px-6 py-3 bg-red-400 text-white rounded hover:bg-red-500">Sign up</button>
       <p className="mt-4 text-sm text-gray-600">
-        Do you have account? <a href="/login" className="text-red-400">Log in</a>
+        Do you have account? <Link to="/login" className="text-red-400">Log in</Link>
       </p>
     </div>
     

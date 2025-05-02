@@ -2,7 +2,7 @@ import React from 'react';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import logIn from '../assets/logIn.png'
 
 
@@ -125,7 +125,7 @@ export default function PerfectRecipeLogin() {
             </form>
 
             <div className="mt-6 text-center text-sm">
-              Haven't registered yet? <a href="/signup" className="text-red-500 hover:underline">Sign up</a>
+              Haven't registered yet? <Link to="/signup" className="text-red-500 hover:underline">Sign up</Link>
             </div>
           </div>
         </div>

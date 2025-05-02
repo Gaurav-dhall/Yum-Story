@@ -2,7 +2,7 @@ import React from 'react';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import signupImg from '../assets/signupImg.png'
 
@@ -159,7 +159,7 @@ export default function PerfectRecipeSignup() {
 
 
               <div className="mt-6 text-center text-sm">
-            Already registered? <a href="/login" className="text-red-500 hover:underline">Log in</a>
+                Already registered? <Link to="/login" className="text-red-500 hover:underline">Log in</Link>
               </div>
             </div>
           </div>

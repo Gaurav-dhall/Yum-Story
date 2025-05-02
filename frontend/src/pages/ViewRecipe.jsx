@@ -1,7 +1,8 @@
 import React from 'react';
-  import Nav from '../components/Nav';
-  import Footer from '../components/Footer'
-  import  { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Nav from '../components/Nav';
+import Footer from '../components/Footer'
+import  { useState } from 'react';
 import { Star, Bookmark, Share2, Clock, MessageSquare, Heart, ChevronDown } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -67,7 +68,7 @@ const findNutrientValue = (nutrients, nutrientName) => {
 
       {/* Breadcrumbs */}
       <div className="text-sm px-8 py-4 text-gray-500">
-        <a href="/" className="text-gray-700 hover:text-red-400">Home</a> &gt; <a href="/recipes" className="text-gray-700 hover:text-red-400">Recipes</a>  &gt; <span className="text-gray-700">{recipe.title}</span>
+        <Link to="/" className="text-gray-700 hover:text-red-400">Home</Link> &gt; <Link to="/recipes" className="text-gray-700 hover:text-red-400">Recipes</Link>  &gt; <span className="text-gray-700">{recipe.title}</span>
       </div>
 
       {/* Recipe Header */}

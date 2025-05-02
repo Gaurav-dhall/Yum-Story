@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -23,9 +24,9 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <h3 className="font-medium mb-4">Quick links</h3>
             <ul className="space-y-2">
-              <li><a href="/" className="text-gray-600 hover:text-red-500">Home</a></li>
-              <li><a href="/recipes" className="text-gray-600 hover:text-red-500">Recipes</a></li>
-              <li><a href="/blog" className="text-gray-600 hover:text-red-500">Blog</a></li>
+              <li><Link to="/" className="text-gray-600 hover:text-red-500">Home</Link></li>
+              <li><Link to="/recipes" className="text-gray-600 hover:text-red-500">Recipes</Link></li>
+              <li><Link to="/blog" className="text-gray-600 hover:text-red-500">Blog</Link></li>
             </ul>
           </div>
 
@@ -33,9 +34,9 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <h3 className="font-medium mb-4">Quick links</h3>
             <ul className="space-y-2">
-              <li><a href="/create-recipe" className="text-gray-600 hover:text-red-500">Share Recipe</a></li>
-              <li><a href="/about" className="text-gray-600 hover:text-red-500">About Us</a></li>
-              <li><a href="/contact" className="text-gray-600 hover:text-red-500">Contact</a></li>
+              <li><Link to="/create-recipe" className="text-gray-600 hover:text-red-500">Share Recipe</Link></li>
+              <li><Link to="/about" className="text-gray-600 hover:text-red-500">About Us</Link></li>
+              <li><Link to="/contact" className="text-gray-600 hover:text-red-500">Contact</Link></li>
             </ul>
           </div>
 
@@ -43,13 +44,10 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <h3 className="font-medium mb-4">Legal</h3>
             <ul className="space-y-2">
-              <li><a href="/terms" className="text-gray-600 hover:text-red-500">Terms Of Use</a></li>
-              <li><a href="/privacy" className="text-gray-600 hover:text-red-500">Privacy & Cookies</a></li>
+              <li><Link to="/terms" className="text-gray-600 hover:text-red-500">Terms Of Use</Link></li>
+              <li><Link to="/privacy" className="text-gray-600 hover:text-red-500">Privacy & Cookies</Link></li>
             </ul>
           </div>
-
-       
-        
         </div>
 
         {/* Bottom Section */}
