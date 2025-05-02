@@ -56,6 +56,7 @@ exports.loginUser=async(req,res)=>{
                 httpOnly: true,
                 secure:true, // Set to true if using https
               // Set to true if using https
+              path: '/',
 
                 sameSite: 'none', // Adjust as necessary
                 maxAge: 24 * 60 * 60 * 1000, // 1 day in milliseconds
@@ -74,7 +75,13 @@ exports.loginUser=async(req,res)=>{
 }
 
 exports.logoutUser=async(req,res)=>{    
-    res.clearCookie('token')
+    res.clearCookie('token', {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'none',
+        path: '/',
+     
+      });
     res.status(200).json({message:'Logout successful'})
 }
 
