@@ -41,6 +41,10 @@ export default function RecipeWebsite() {
   };
 
   const handleImageUpload = async () => {
+    if (!fileInputRef.current) {
+      console.error('File input reference is not available');
+      return;
+    }
     const file = fileInputRef.current.files[0];
     if (!file) {
       console.error('No file selected');
