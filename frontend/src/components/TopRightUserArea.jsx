@@ -54,10 +54,17 @@ export default function TopRightUserArea() {
           <button
           className="block w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-gray-100"
           onClick={async () => {
-            await axios.post(`${import.meta.env.VITE_API_BASE_URL}/users/logout`, { withCredentials: true });
-            alert('Logout successful');
-            setUser(null);
-            navigate('/login');
+            try {
+              await axios.post(`${import.meta.env.VITE_API_BASE_URL}/users/logout`, {}, { 
+                withCredentials: true 
+              });
+              setUser(null);
+              setDropdownOpen(false);
+              navigate('/login');
+            } catch (error) {
+              console.error('Logout error:', error);
+              alert('Logout failed. Please try again.');
+            }
           }}
           >
           Logout

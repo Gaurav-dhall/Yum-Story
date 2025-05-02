@@ -1,4 +1,3 @@
-
 const User =require('../models/UserModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
@@ -52,21 +51,15 @@ exports.loginUser=async(req,res)=>{
             }
 
             const token = jwt.sign({email: user.email , id: user._id }, process.env.JWT_SECRET);
-            res.cookie('token', token,{
+            res.cookie('token', token, {
                 httpOnly: true,
-                secure:true, // Set to true if using https
-              // Set to true if using https
-              path: '/',
-
-                sameSite: 'none', // Adjust as necessary
-                maxAge: 24 * 60 * 60 * 1000, // 1 day in milliseconds
+                secure: process.env.NODE_ENV === 'production',
+                sameSite: 'lax',
+                path: '/',
+                maxAge: 24 * 60 * 60 * 1000 // 1 day
             });
             
             res.status(200).json({message:'Login successful', token})
-            // You can also send user data if needed
-
-            // Passwords match, login successful
-            // You can set a session or token here if needed
         });
         
     } catch (error) {
@@ -77,11 +70,10 @@ exports.loginUser=async(req,res)=>{
 exports.logoutUser=async(req,res)=>{    
     res.clearCookie('token', {
         httpOnly: true,
-        secure: true,
-        sameSite: 'none',
-        path: '/',
-     
-      });
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        path: '/'
+    });
     res.status(200).json({message:'Logout successful'})
 }
 
