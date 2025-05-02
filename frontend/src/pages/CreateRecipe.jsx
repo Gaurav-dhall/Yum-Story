@@ -35,23 +35,20 @@ export default function RecipeWebsite() {
   const [selectedFile, setSelectedFile] = useState(null);
   const fileInputRef = useRef(null);
 
-
   const handleFileChange = (e) => {
-    setSelectedFile(e.target.files[0]);
+    if (e.target.files && e.target.files[0]) {
+      setSelectedFile(e.target.files[0]);
+      setImagePath(URL.createObjectURL(e.target.files[0]));
+    }
   };
 
   const handleImageUpload = async () => {
-    if (!fileInputRef.current) {
-      console.error('File input reference is not available');
-      return;
-    }
-    const file = fileInputRef.current.files[0];
-    if (!file) {
+    if (!selectedFile) {
       console.error('No file selected');
       return;
     }
     const formData = new FormData();
-    formData.append('avatar', file);
+    formData.append('avatar', selectedFile);
 
     try {
       const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/recipes/upload-image`, formData, {
@@ -60,9 +57,8 @@ export default function RecipeWebsite() {
         },
       });
 
-      setImagePath(res.data.imagePath); // Assuming backend returns { imagePath: '/uploads/abc.jpg' }
+      setImagePath(res.data.imagePath);
       alert("Image uploaded successfully!");
-      console.log(imagePath);
     } catch (err) {
       console.error("Upload failed:", err);
       alert("Image upload failed");
@@ -212,6 +208,7 @@ export default function RecipeWebsite() {
                       className="ml-2 mr-2 text-sm text-red-500 w-full h-full"
                       type="file"
                       name="avatar"
+                      ref={fileInputRef}
                       onChange={handleFileChange}
                     />
                   </div>
