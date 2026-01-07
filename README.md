@@ -33,7 +33,15 @@ I worked as the **Backend Developer** for this group project.
 - Secure image uploads using Cloudinary
 
 ## 📸 Screenshots
-(Add screenshots of recipe listing, recipe detail, and create recipe pages)
+![Welcome Screen](screenshots/yumStoryWelcome.png)
+![View Recipe Screen](screenshots/yumStoryViewRecipe.png)
+![Upload Image Screen](screenshots/yumStoryUploadImage.png)
+![Signup Screen](screenshots/yumStorySignup.png)
+![Recipe Page Screen](screenshots/yumStoryRecipePage.png)
+![Login Screen](screenshots/yumStoryLogin.png)
+![Instructions Screen](screenshots/yumStoryInstructions.png)
+![Create Recipe Screen](screenshots/yumStoryCreateRecipe.png)
+![About Screen](screenshots/yumStoryAbout.png)
 
 ## ⚙️ Installation & Setup
 ```bash
